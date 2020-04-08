@@ -15,8 +15,17 @@
 
 ##### Error 
 - error 一般不能称之为异常，一般error都脱离了程序的掌控，比如堆栈error，下面这些一般都输入error：
-    - OutOfMemoryError
-    - StackOverflowError
+    - [OutOfMemoryError](#outOfMemoryError)
+    - [StackOverflowError](#stackOverflowError)
     - UnknownError
     - ZipError
     - InternalError
+
+#### 常见Exception和Error介绍说明
+
+#####Error 
+
+###### <span id="outOfMemoryError">OutOfMemoryError</span>
+....TODO
+###### <span id="stackOverflowError">StackOverflowError</span>
+....TODO
