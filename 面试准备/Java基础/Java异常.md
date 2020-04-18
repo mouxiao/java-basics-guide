@@ -35,6 +35,9 @@
   
   > 一般OutOfMemoryError分为三类：PermGen space, Java heap space, unable to create new native thread。
 - PermGen space
+    - 一般出现这种问题是程序中使用了大量的jar或者class，使java虚拟机装载类的空间不够，解决这类问题一般有以下两种办法：
+        - 增加java虚拟机中的xx:PermSize(持久代内存最小值)和XX:MaxPermSize(持久代内存最大值)参数的大小
+        - 清理应用程序中多余的jar包，或者多个项目jar包共享
 - <span id="javaHeapSpace"></span>Java heap space
     ```java
     public class HeapOOM {
@@ -50,10 +53,10 @@
     一般像这种如果不是[内存泄露]()的话，可以通过修改虚拟机中的堆内存大小(-Xmx与-Xms)解决，比如：
     - -Xmx3550m:设置JVM最大堆内存为3550M。
     - -Xms3550m:设置JVM初始堆内存为3550M，此值可以设置与-Xmx相同，可以避免每次垃圾回收完成后JVM重新分配内存。
-    
-    
-- 
 - unable to create new native thread。               
+    - 出现这种情况一般是java程序创建的线程数量超过了系统正常运行所运行的线程数量(MaxProcessMemory-JVMMemory-ReservedOsMemory)，解决思路一般可以从下面几点考虑：
+        - 合理创建使用线程，对线程做到有效的资源回收。
+        - 修改MaxProcessMemory(使用64为操作系统)，JVMMemory(减少JVMMemory的分配)，ReservedOsMemory(减少单个线程栈的大小)参数                                                                                                   
                                                                                                                                                                                                                                                                                                                                                                    
 
 ###### <span id="stackOverflowError">StackOverflowError</span>
