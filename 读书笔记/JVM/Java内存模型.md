@@ -38,3 +38,13 @@ jdk1.8之后java内存模型
 - 当线程请求栈的深度大于虚拟机所允许的最大限度，会抛出[StackOverflowError](../../面试准备/Java基础/Java异常.md#stackOverflowError)。
 - 如果java虚拟机栈允许动态扩容时，当栈扩容无发申请到足够的内存时会抛出[OutOfMemoryError](../../面试准备/Java基础/Java异常.md#outOfMemoryError)。
 
+#### 本地方法栈(Native Method Stacks)
+> 本地方法栈和虚拟机栈大同小异，不同的是虚拟机栈是为java方法(字节码)服务，本地方法栈是为Native修饰的方法服务。他们的相同点如下:
+- 都是线程私有
+- 本地方法被执行的时候，在本地方法栈也会创建一个栈帧，用于存放该本地方法的局部变量表、操作数栈、动态链接、出口信息。
+- 方法执行完毕后相应的栈帧也会出栈并释放内存空间，也会出现 [StackOverFlowError](../../面试准备/Java基础/Java异常.md#stackOverflowError) 
+和 [OutOfMemoryError](../../面试准备/Java基础/Java异常.md#outOfMemoryError) 两种异常。
+ 
+
+>
+
