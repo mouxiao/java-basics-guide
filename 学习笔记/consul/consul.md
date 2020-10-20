@@ -10,7 +10,7 @@
 
 #### Consul 基本操作
 常用基本命令
-- dev 以开发模式启动代理
+- dev 以开发模式启动代理(consul agent -dev)
 - members 查看集群成员
 - agent 启动一个consul代理
 - config-dir 配置文件目录，里面所有以.json结尾的文件都会被加载
