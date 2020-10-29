@@ -63,6 +63,42 @@
 - 什么情况下会出现StackOverflowError？
     - 在[Java虚拟机栈]()这个内存区域中，如果线程请求的栈深度大于虚拟机所允许的深度，将抛出StackOverflowError异常
     - [本地方法栈]()在栈深度溢出时，也会抛出StackOverflowError
+- 解决方法
+  - 优化jvm参数(-Xss)
+ ```java
+
+//方法递归导致stackOverflowError
+public class JvmTest {
+	private int i = 0;
+	public void a(){
+		System.out.println(i++);
+		a();
+	}
+	public static void main(String[] args) {
+		JvmTest j = new JvmTest();
+		j.a();
+	}
+}
+```
+```java
+//线程请求的栈深度大于虚拟机所允许的深度
+public void threadTest(){
+    while (true) {
+      new Thread(new Runnable() {
+        @Override
+        public void run() {
+          //NOTHING
+        }
+      });
+      System.out.println(i++);
+    }
+  }
+
+  public static void main(String[] args) {
+    JvmTest j = new JvmTest();
+    j.threadTest();
+  }
+```
 
 
 
