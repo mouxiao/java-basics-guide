@@ -1,4 +1,7 @@
 ### Spring IOC加载过程
+> IOC：控制反转，管理bean，
+
+
 #### 扫描
 ##### 基于XML配置[ClassPathXmlApplicationContext]
 ```xml
